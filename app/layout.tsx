@@ -4,7 +4,7 @@ import localFont from "next/font/local"
 import "./globals.css";
 
 const coolvetica = localFont({
-  src: '/fonts/Coolvetica Rg.otf',
+  src: '../public/fonts/CoolveticaRg.otf',
   variable: '--font-coolvetica',
 });
 
