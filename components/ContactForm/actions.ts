@@ -41,6 +41,7 @@ export async function submitContactForm(
       {
         from: fromEmail,
         to: [contactEmail],
+        replyTo: [email],
         subject: `New contact form submission from ${name}`,
         text: `You have a new message from ${name} (${email}):\n\nSubject: ${subject}\n\nMessage:\n${message}`,
       },
