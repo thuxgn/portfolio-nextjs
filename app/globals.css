@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+ inline {
+  --font-coolvetica: var(--font-coolvetica), sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+hr {
+    margin-top: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-family: Coolvetica;
+    
+}
+
+body{
+    background-color: #fdf5e6;
+    color: #333;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 30px;    
+    padding-left: 70px;
+    padding-right: 70px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fdf5e6;
+    background-color: #1a1a1a;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #646464;
+}
+
+textarea {
+    box-sizing: border-box;
+    background-color: white;
+    flex-wrap: wrap;
+    
+}
+
+.single-line-textarea {
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.multiple-line-textarea {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#toast {
+    visibility: hidden; 
+    min-width: 300px; ;
+    backdrop-filter: blur(5px);
+    background-color: black;
+    color: #fff;
+    text-align: center; 
+    border-radius: 8px;
+    padding: 16px; 
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    top: 30px;
+    transform: translateX(-50%);
+    opacity: 0; 
+    transition: opacity 0.4s, visibility 0.4s;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#toast.show {
+    visibility: visible; 
+    opacity: 1;
+}
+
+#toast.success { background-color: rgba(76, 175, 80, 0.6); } 
+#toast.fail { background-color: rgba(244, 67, 54, 0.6); }
+ 
+@media (max-width: 1100px) {
+    body{
+        padding: 30px;
+    }
+}
