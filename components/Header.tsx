@@ -12,8 +12,7 @@ export default function Header() {
         <div className="w-full max-[620px]:w-1/2 flex justify-end max-[620px]:justify-center items-center">
         <ul className="flex flex-row items-center gap-5 p-2.5 whitespace-nowrap justify-center">
             <li><Link target="_blank" href="https://payhip.com/thuxgn"><Image width={30} height={30} className="transition-transform duration-300 ease-out hover:scale-120" src="/store.png" alt="Shop"/></Link></li>
-            <li><Link target="_blank" href="mailto:thuxgn.business@gmail.com"><Image width={30} height={30} className="transition-transform duration-300 ease-out hover:scale-120" src="/email.png" alt="Email" /></Link></li>
-            <li><Link target="_blank" href="https://www.youtube.com/@thuxgn"><Image width={30} height={30} className="transition-transform duration-300 ease-out hover:scale-120" src="/youtube.png" alt="YouTube" /></Link></li>
+            <li><Link target="_blank" href="https://github.com/thuxgn"><Image width={30} height={30} className="transition-transform duration-300 ease-out hover:scale-120" src="/GitHub_Invertocat_Black.png" alt="Email" /></Link></li>
             <li><Link target="_blank" href="https://www.instagram.com/thuxgn/"><Image width={30} height={30} className="transition-transform duration-300 ease-out hover:scale-120" src="/instagram.png" alt="Instagram" /></Link></li>
             <li><Link target="_blank" href="https://www.tiktok.com/@thuxgn"><Image width={30} height={30} className="transition-transform duration-300 ease-out hover:scale-120" src="/tiktok.png" alt="TikTok" /></Link></li>
         </ul>
