@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     siteName: "thuxgn Portfolio",
     images: [
       {
-        url: "/thuxgn1000px.png", 
+        url: "/favicon.ico", 
         width: 1000,
         height: 1000,
         alt: "thuxgn Logo",
