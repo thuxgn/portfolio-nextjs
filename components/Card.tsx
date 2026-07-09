@@ -30,6 +30,7 @@ export default function Card(params: { videourl: string, alttext: string, captio
                     sizes="(max-width: 620px) 100vw, (max-width: 1100px) 50vw, 25vw"
                     src={thumbnail} 
                     loading="eager"
+                    unoptimized
                     alt={params.alttext}>
                 </Image>
             </Link>
