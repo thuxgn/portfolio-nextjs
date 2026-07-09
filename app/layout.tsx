@@ -21,6 +21,23 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "thuxgn",
   description: "Portfolio",
+  authors: [{ name: "thuxgn" }],
+  openGraph: {
+    title: "thuxgn",
+    description: "COMMISSION OPEN!.",
+    url: "https://thuxgn.site", 
+    siteName: "thuxgn Portfolio",
+    images: [
+      {
+        url: "/thuxgn1000px.png", 
+        width: 1000,
+        height: 1000,
+        alt: "thuxgn Logo",
+      },
+    ],
+    locale: "vi-VN",
+    type: "website",
+  }
 };
 
 export default function RootLayout({
