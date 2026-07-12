@@ -45,6 +45,17 @@ button {
     cursor: pointer;
 }
 
+.grid {
+    max-width: 1600px;
+    gap: 20px;
+    display: grid;
+    padding: 10px;
+    margin-inline: auto;
+    margin-block: 20px;
+    list-style-type: none;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
 button:hover {
     background-color: #646464;
 }
@@ -101,7 +112,7 @@ textarea {
 #toast.success { background-color: rgba(76, 175, 80, 0.6); } 
 #toast.fail { background-color: rgba(244, 67, 54, 0.6); }
  
-@media (max-width: 1100px) {
+@media (max-width: 640px) {
     body{
         padding: 30px;
     }

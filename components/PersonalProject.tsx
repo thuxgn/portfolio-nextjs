@@ -64,7 +64,7 @@ export default function PersonalProject() {
     return(
         <>
             <h1 className="text-left"><b><u>Personal Projects</u></b></h1>
-            <ul className="p-[10px] grid max-w-[1600px] max-[620px]:grid-cols-1 max-[1100px]:grid-cols-2 grid-cols-4 gap-[20px] mx-auto my-[20px] list-none">
+            <ul className="grid">
                 {listItems}
             </ul>
         </>
