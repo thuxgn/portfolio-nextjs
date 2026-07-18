@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://portfolio-nextjs-thuxgns-projects.vercel.app"),
   title: "@thuxgn",
   description: "COMMISSION OPEN!",
-  authors: [{ name: "thuxgn" }],
+  authors: [{ name: "@thuxgn" }],
   openGraph: {
     title: "@thuxgn",
     description: "COMMISSION OPEN!",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
         url: "/favicon.ico", 
         width: 1000,
         height: 1000,
-        alt: "thuxgn Logo",
+        alt: "favicon",
       },
     ],
     locale: "vi-VN",
