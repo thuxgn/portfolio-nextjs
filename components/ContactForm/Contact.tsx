@@ -5,7 +5,7 @@ import { type ContactFormState, submitContactForm } from '@/components/ContactFo
 const initialState: ContactFormState = {
   success: false,
   error: null,
-  ids: null,
+  timestamp: Date.now()
 };
 
 
@@ -22,15 +22,13 @@ export default function Contact() {
         if (state.success || state.error) {
             setShowToast(true);
 
-            // Hide the toast automatically after 4 seconds (4000ms)
             const timer = setTimeout(() => {
                 setShowToast(false);
             }, 4000);
 
-            // Clean up the timer if the component unmounts or state changes again
             return () => clearTimeout(timer);
         }
-    }, [state.success, state.error]);
+    }, [state.timestamp]);
 
     const toastClassName = `${showToast ? 'show' : ''} ${state.success ? 'success' : 'fail' }`.trim();
 

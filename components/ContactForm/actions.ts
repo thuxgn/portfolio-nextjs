@@ -1,14 +1,27 @@
 'use server';
+import nodemailer from 'nodemailer';
 
-import { Resend } from 'resend';
+// Create a transporter using SMTP
+const transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false, // use STARTTLS (upgrade connection to TLS after connecting)
+  auth: {
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS,
+  },
+});
+
+function isValidEmail(email: string): boolean {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
 
 export interface ContactFormState {
   success: boolean;
   error: string | null;
-  ids: { id: string }[] | null;
+  timestamp: number | null; // Trigger the toast
 }
-
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function submitContactForm(
   prevState: ContactFormState,
@@ -23,50 +36,54 @@ export async function submitContactForm(
     return {
       success: false,
       error: 'All fields are required',
-      ids: null,
+      timestamp: Date.now(),
     };
   }
 
-  const fromEmail = process.env.EMAIL_FROM;
-  const contactEmail = process.env.CONTACT_EMAIL || 'thuxgn.business@gmail.com';
+  if (!isValidEmail(email)) {
+    return {
+      success: false,
+      error: 'Invalid email.',
+      timestamp: Date.now(),
+    };
+  }
 
   try {
-    const { data, error } = await resend.batch.send([
-      {
-        from: fromEmail,
+    const [receiptResult, notificationResult] = await Promise.all([
+      
+      // To users
+      transporter.sendMail({
+        from: process.env.SMTP_USER,
         to: [email],
-        subject: 'We received your message',
+        subject: `We received your message - ${subject}`,
         text: `Hi ${name},\n\nThank you for reaching out! We received your message:\n"${message}"\n\nWe will get back to you soon.`,
-      },
-      {
-        from: fromEmail,
-        to: [contactEmail],
+      }),
+
+      // To me
+      transporter.sendMail({
+        from: process.env.SMTP_USER, 
+        to: process.env.SMTP_USER,
         replyTo: [email],
-        subject: `New contact form submission from ${name}`,
-        text: `You have a new message from ${name} (${email}):\n\nSubject: ${subject}\n\nMessage:\n${message}`,
-      },
+        subject: `New form submission: ${subject}`,
+        text: `You have received a new message via the form:\n\n` +
+              `From: ${name} (${email})\n` +
+              `Subject: ${subject}\n\n` +
+              `Message:\n${message}`,
+      })
+
     ]);
-
-    if (error) {
-      console.error('Resend batch error:', error);
-      return {
-        success: false,
-        error: error.message,
-        ids: null,
-      };
-    }
-
     return {
       success: true,
       error: null,
-      ids: data?.data ?? null,
+      timestamp: Date.now()
     };
-  } catch (err) {
-    console.error('Unexpected error:', err);
+
+  } catch (err: any) {
+    console.error('Nodemailer error caught:', err);
     return {
       success: false,
-      error: 'Failed to send form. Please try again.',
-      ids: null,
+      error: err.message || 'Failed to send form. Please try again.',
+      timestamp: Date.now()
     };
-  }
+  } 
 }
