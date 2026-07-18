@@ -19,15 +19,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://thuxgn.site"),
-  title: "thuxgn",
-  description: "Portfolio",
+  metadataBase: new URL("https://portfolio-nextjs-thuxgns-projects.vercel.app"),
+  title: "@thuxgn",
+  description: "COMMISSION OPEN!",
   authors: [{ name: "thuxgn" }],
   openGraph: {
-    title: "thuxgn",
-    description: "COMMISSION OPEN!.",
-    url: "https://thuxgn.site", 
-    siteName: "thuxgn Portfolio",
+    title: "@thuxgn",
+    description: "COMMISSION OPEN!",
+    url: "https://portfolio-nextjs-thuxgns-projects.vercel.app", 
+    siteName: "@thuxgn",
     images: [
       {
         url: "/favicon.ico", 
